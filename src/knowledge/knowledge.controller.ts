@@ -9,6 +9,7 @@ import {
     UseInterceptors,
     HttpException,
     HttpStatus,
+    UseGuards,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiSecurity } from '@nestjs/swagger';
@@ -24,9 +25,11 @@ import {
 import { KnowledgeService } from './knowledge.service';
 import { ScrapeDto } from './dto/scrape.dto';
 import { UploadDto, UploadDtoWithFile } from './dto/upload.dto';
+import { ApiKeyGuard } from 'src/guards/api-key-guard';
 
 @ApiTags('Knowledge')
 @ApiSecurity('x-api-key')
+@UseGuards(ApiKeyGuard)
 @Controller('api/v1/knowledge')
 export class KnowledgeController {
     constructor(private readonly knowledgeService: KnowledgeService) { }
