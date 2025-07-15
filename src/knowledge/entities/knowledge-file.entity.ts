@@ -4,9 +4,11 @@ import {
     Column,
     ManyToOne,
     JoinColumn,
+    OneToMany
 } from 'typeorm';
 import { Business } from './business.entity';
 import { ScrapeJob } from './scrape-job.entity';
+import { FilePart } from './file-part.entity';
 
 @Entity('knowledge_files')
 export class KnowledgeFile {
@@ -51,4 +53,7 @@ export class KnowledgeFile {
     })
     @JoinColumn({ name: 'scrapeJobId', referencedColumnName: 'jobId' })
     scrapeJob: ScrapeJob;
+
+    @OneToMany(() => FilePart, part => part.file)
+    parts: FilePart[];
 }

@@ -26,6 +26,11 @@ export class UploadDto {
     @IsString()
     @IsNotEmpty()
     businessName: string;
+
+    @ApiProperty({ example: 'Technology' })
+    @IsString()
+    @IsNotEmpty()
+    industry: string;
 }
 
 export class UploadDtoWithFile extends UploadDto {

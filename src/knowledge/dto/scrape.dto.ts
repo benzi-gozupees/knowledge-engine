@@ -9,4 +9,7 @@ export class ScrapeDto {
 
     @ApiProperty({ example: 'Example Company' })
     businessName: string;
+
+    @ApiProperty({ example: 'Technology' })
+    industry: string;
 }
